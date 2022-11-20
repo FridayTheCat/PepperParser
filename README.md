@@ -6,7 +6,7 @@
 Проект развернут на бесплатном хостинге https://freeasphosting.net
 Ссылка на релиз https://pepperparser.bsite.net
 
-ASP NET CORE MVC Web приложение.
+C# ASP NET CORE MVC Web приложение.
 
 # Технологии
 
