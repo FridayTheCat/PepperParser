@@ -1,0 +1,56 @@
+﻿<section id="header" class="wrapper">
+
+	<!-- Logo -->
+	<div id="logo">
+		<h1><a asp-controller="Home" asp-action="Index">Pepper Parser</a></h1>
+		<p>A free parser of promocodes</p>
+	</div>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul>
+			<li><a asp-controller="Home" asp-action="Index">Главная</a></li>
+			<li>
+				<a asp-controller="Aggregators" asp-action="Index">Площадки</a>
+				<ul>
+
+					<li>
+						<a href="~/Aggregators#Marketplace">Маркетплейсы</a>
+						<ul>
+							<li><a asp-controller="Promocodes" asp-action="Ozon">Ozon</a></li>
+							<li><a asp-controller="Promocodes" asp-action="KazanExpress">KazanExpress</a></li>
+							<li><a asp-controller="Promocodes" asp-action="Wildberries">Wildberries</a></li>
+							<li><a asp-controller="Promocodes" asp-action="Aliexpress">AliExpress</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="~/Aggregators#Meal">Доставки продуктов</a>
+						<ul>
+							<li><a asp-controller="Promocodes" asp-action="Sbermarket">Сбермаркет</a></li>
+							<li><a asp-controller="Promocodes" asp-action="Samokat">Самокат</a></li>
+							<li><a asp-controller="Promocodes" asp-action="Lenta">Лента Онлайн</a></li>
+							<li><a asp-controller="Promocodes" asp-action="YandexLavka">Яндекс.Лавка</a></li>
+							<li><a asp-controller="Promocodes" asp-action="DeliveryClub">Delivery Club</a></li>
+							<li><a asp-controller="Promocodes" asp-action="YandexEda">Яндекс.Еда</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="~/Aggregators#Eda">Доставки еды</a>
+						<ul>
+							<li><a asp-controller="Promocodes" asp-action="DeliveryClub">Delivery Club</a></li>
+							<li><a asp-controller="Promocodes" asp-action="YandexEda">Яндекс.Еда</a></li>
+							<li><a asp-controller="Promocodes" asp-action="Dodo">Додо Пицца</a></li>
+							<li><a asp-controller="Promocodes" asp-action="PapaJons">Папа Джонс</a></li>
+							<li><a asp-controller="Promocodes" asp-action="KFC">KFC</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</li>
+			<li><a asp-controller="About" asp-action="Index">О нас</a></li>
+			<li><a asp-controller="Donation" asp-action="Index">Донат</a></li>
+			<li><a asp-controller="Contact" asp-action="Index">Обратная связь</a></li>
+		</ul>
+	</nav>
+
+</section>

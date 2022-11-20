@@ -1,0 +1,21 @@
+﻿@using PepperParser.Domain
+@if(Model.Count == 0)
+{
+    <div class="big-home-text">
+        <h2 style="text-align: center">В настоящее время нет актуальных промокодов :(</h2>
+    </div>
+}
+
+<div>
+    @foreach (var promoc in Model)
+    {
+            <div class="grid-box">
+                    <h3 class="big-promo-text">@promoc.Name</h3>
+                    <p></p>
+            <h4 class="litle-big-promo-text">Истекает: @promoc.AvalibleTo</h4>
+                    <p></p>
+            <h3 class="big-promo-text">@promoc.Code</h3>
+        </div>
+        <p></p>
+    }
+</div>

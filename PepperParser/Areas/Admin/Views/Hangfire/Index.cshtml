@@ -1,0 +1,45 @@
+﻿@if ((string)TempData["JobAdded"] == "Ok")
+{
+    <script>alert('Фоновая задача успешно создана или обновлена!')</script>
+}
+
+
+<div class="big-admin-text">
+    <p>Вы залогинены</p>
+    <h1>АДМИНКА</h1>
+</div>
+
+<div class="grid-admin">
+    <p>Здесь можно запустить создание или обновление фоновой задачи.</p>
+    <p>Так же устанавливает флаг первого запуска</p>
+    <p>Значение Cron берется из appsettings.json</p>
+    <p>===============></p>
+    <p><a asp-area="Admin" asp-controller="Hangfire" asp-action="UpdateDb">Запустить создание/обновление задачи </a></p>
+</div>
+
+<div class="grid-admin">
+    <p>Здесь можно посмотреть список всех промокодов в БД.</p>
+    <p>----------------------</p>
+    <p>После удаления всех промокодов из БД запустити создание/обновление фоновой задачи</p>
+    <p>----------------------</p>
+    <p><a asp-area="Admin" asp-controller="Hangfire" asp-action="ListOfPromocodes">Посмотреть все промокоды из БД</a></p>
+</div>
+
+<div class="grid-admin">
+    <p>Можно перейти в панель управления фоновыми задачами (dashboard)</p>
+    <p>----------------------</p>
+    <p>Немедленно запустить выполнение задачи или удалить задачу можно в Dashboard</p>
+    <p>===============></p>
+    <p><a href="~/dashboard">Dashboard</a></p>
+</div>
+
+<div class="grid-admin">
+    <p>После не забудьте выйти.</p>
+    <p>----------------------</p>
+    <p>----------------------</p>
+    <p>----------------------</p>
+    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+        <input type="submit" value="Выйти" />
+    </form>
+</div>
+
