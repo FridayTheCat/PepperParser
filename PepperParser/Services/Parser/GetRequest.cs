@@ -74,6 +74,9 @@ namespace PepperParser.Services.Parser
                                         nameEnd = html.IndexOf("</span", nameStart);
                                         name = html.Substring(nameStart, nameEnd - nameStart).Trim();
 
+                                        if (name.Contains("&quot;"))
+                                            name = FixQuot(name);
+
                                         //Поиск ID
                                         idStart = html.IndexOf("threadvmpf/", nameEnd);
                                         idStart += 11;
@@ -205,5 +208,7 @@ namespace PepperParser.Services.Parser
                 }
             }
         }
+
+        private static string FixQuot(string nameWithProblem) => nameWithProblem.Replace("&quot;", "\"");
     }
 }
