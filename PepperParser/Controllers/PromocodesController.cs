@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PepperParser.Domain;
 using PepperParser.Domain.Repositories.EF;
-using PepperParser.Services.Parser;
 
 namespace PepperParser.Controllers
 {

@@ -45,7 +45,7 @@ namespace PepperParser.Areas.Admin.Controllers
             //Установка флага первого запуска
             GetRequest.IsFirstStart = true;
             //Создание задачи
-            RecurringJob.AddOrUpdate(() => eFPromocode.UpdateAllPromocode(urls), cron);
+            RecurringJob.AddOrUpdate(() => eFPromocode.UpdateAllPromocode(urls, config), cron);
 
             TempData["JobAdded"] = "Ok";
             return RedirectToAction("Index", "Hangfire");

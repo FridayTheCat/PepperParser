@@ -7,8 +7,11 @@ namespace PepperParser.Domain
 {
     public class AppDbContext : IdentityDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        private readonly IConfiguration _configuration;
+
+        public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration) : base(options)
         {
+            _configuration = configuration;
         }
 
         public DbSet<Promocode> Promocode { get; set; }
@@ -28,12 +31,12 @@ namespace PepperParser.Domain
             modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
             {
                 Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
-                UserName = "login", //логин
-                NormalizedUserName = "LOGIN", //ЛОГИН
+                UserName = _configuration.GetValue<string>("UserName"), //логин
+                NormalizedUserName = _configuration.GetValue<string>("NormalizedUserName"), //ЛОГИН
                 Email = "my@email.com",
                 NormalizedEmail = "MY@EMAIL.COM",
                 EmailConfirmed = true,
-                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Password"), //Пароль
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration.GetValue<string>("Password")), //Пароль
                 SecurityStamp = string.Empty
             });
 
@@ -45,5 +48,6 @@ namespace PepperParser.Domain
 
            
         }
+
     }
 }

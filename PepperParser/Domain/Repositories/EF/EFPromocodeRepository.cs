@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PepperParser.Domain.Implementation;
 using PepperParser.Domain.Repositories.Abstract;
 using PepperParser.Services.Mail;
@@ -19,7 +20,7 @@ namespace PepperParser.Domain.Repositories.EF
             _context.Promocode.Where(x => x.Agregator == agregatorName).ToList();
 
         //Фоновая задача обновления данных обо всех промокодах
-        public void UpdateAllPromocode(List<string> urls)
+        public void UpdateAllPromocode(List<string> urls, [FromServices] IConfiguration config)
         {
             //Парсинг данных по всем ссылкам и сохранения их в БД
             foreach (var url in urls)
@@ -55,7 +56,7 @@ namespace PepperParser.Domain.Repositories.EF
             _context.SaveChanges();
             
             //Отправка Email оповещения об успешном обновлении БД
-            Mail.SendMail(new Feedback() { Email = "AdminPepper@pepper.com", Name = "Hangfire", Message = "База данных успешно обновлена!" });
+            Mail.SendMail(new Feedback() { Email = "AdminPepper@pepper.com", Name = "Hangfire", Message = "База данных успешно обновлена!" }, config);
         }
     }
 }

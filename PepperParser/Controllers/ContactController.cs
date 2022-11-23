@@ -12,7 +12,7 @@ namespace PepperParser.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendFeedback(Feedback feedback)
+        public IActionResult SendFeedback(Feedback feedback, [FromServices] IConfiguration config)
         {
             if (!ModelState.IsValid)
             {
@@ -20,7 +20,7 @@ namespace PepperParser.Controllers
             }
 
             //Отправка сообщения
-            var resposne = Mail.SendMail(feedback);
+            var resposne = Mail.SendMail(feedback, config);
 
             if (resposne == StatusCodes.Status200OK)
             {
