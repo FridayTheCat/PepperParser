@@ -7,9 +7,9 @@ namespace PepperParser.Controllers
     public class PromocodesController : Controller
     {
         private readonly EFPromocodeRepository eFPromocode;
-        public PromocodesController(AppDbContext context)
+        public PromocodesController(AppDbContext context, IConfiguration config)
         {
-            eFPromocode = new EFPromocodeRepository(context);
+            eFPromocode = new EFPromocodeRepository(context, config);
         }
 
         public IActionResult Index()

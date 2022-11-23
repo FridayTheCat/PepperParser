@@ -31,9 +31,9 @@ namespace PepperParser.Areas.Admin.Controllers
             "https://www.pepper.ru/coupons/aliexpress.com"
         };
 
-        public HangfireController(AppDbContext context)
+        public HangfireController(AppDbContext context, IConfiguration config)
         {
-            eFPromocode = new EFPromocodeRepository(context);
+            eFPromocode = new EFPromocodeRepository(context, config);
             _context = context;
         }
 
@@ -45,7 +45,7 @@ namespace PepperParser.Areas.Admin.Controllers
             //Установка флага первого запуска
             GetRequest.IsFirstStart = true;
             //Создание задачи
-            RecurringJob.AddOrUpdate(() => eFPromocode.UpdateAllPromocode(urls, config), cron);
+            RecurringJob.AddOrUpdate(() => eFPromocode.UpdateAllPromocode(urls), cron);
 
             TempData["JobAdded"] = "Ok";
             return RedirectToAction("Index", "Hangfire");

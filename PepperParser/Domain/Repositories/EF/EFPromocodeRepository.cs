@@ -10,9 +10,11 @@ namespace PepperParser.Domain.Repositories.EF
     public class EFPromocodeRepository : IPromocodeRepository
     {
         private readonly AppDbContext _context;
-        public EFPromocodeRepository(AppDbContext context)
+        private readonly IConfiguration _config;
+        public EFPromocodeRepository(AppDbContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
 
         //Получение из БД промокодов по агрегатору/площадке
@@ -20,7 +22,7 @@ namespace PepperParser.Domain.Repositories.EF
             _context.Promocode.Where(x => x.Agregator == agregatorName).ToList();
 
         //Фоновая задача обновления данных обо всех промокодах
-        public void UpdateAllPromocode(List<string> urls, [FromServices] IConfiguration config)
+        public void UpdateAllPromocode(List<string> urls)
         {
             //Парсинг данных по всем ссылкам и сохранения их в БД
             foreach (var url in urls)
@@ -56,7 +58,7 @@ namespace PepperParser.Domain.Repositories.EF
             _context.SaveChanges();
             
             //Отправка Email оповещения об успешном обновлении БД
-            Mail.SendMail(new Feedback() { Email = "AdminPepper@pepper.com", Name = "Hangfire", Message = "База данных успешно обновлена!" }, config);
+            Mail.SendMail(new Feedback() { Email = "AdminPepper@pepper.com", Name = "Hangfire", Message = "База данных успешно обновлена!" }, _config);
         }
     }
 }

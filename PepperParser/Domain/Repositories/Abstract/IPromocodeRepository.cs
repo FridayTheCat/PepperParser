@@ -5,7 +5,7 @@ namespace PepperParser.Domain.Repositories.Abstract
 {
     public interface IPromocodeRepository
     {
-        void UpdateAllPromocode(List<string> urls, [FromServices] IConfiguration config);
+        void UpdateAllPromocode(List<string> urls);
         List<Promocode> GetPromocodeByAgregatorName(string agregatorName);
     }
 }
