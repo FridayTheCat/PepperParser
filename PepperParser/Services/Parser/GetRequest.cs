@@ -10,7 +10,7 @@ namespace PepperParser.Services.Parser
     //Парсер промокодов с Pepper
     public static class GetRequest
     {
-        //Прокси для отслеживания пакетов через Feddler, уже не нужны
+        //Прокси для отслеживания пакетов через Fiddler, уже не нужны
         //private static WebProxy proxy = new WebProxy("localhost", 8888);
 
         private static CookieContainer cookieContainerForList;
