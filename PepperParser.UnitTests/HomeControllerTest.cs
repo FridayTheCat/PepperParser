@@ -23,9 +23,9 @@ namespace PepperParser.UnitTests
         }
 
         [Test]
-        public void Test_Index_ReturnsViewName()
+        public void Test_Index_ReturnsViewResultNotNull()
         {
-            Assert.That(_viewResult?.ViewName, Is.EqualTo(null));
+            Assert.IsNotNull(_viewResult);
         }
 
         [Test]
